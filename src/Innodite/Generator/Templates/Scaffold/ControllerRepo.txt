@@ -4,7 +4,7 @@ use App\Http\Requests;
 use $REQUEST_NAMESPACE$\Create$MODEL_NAME$Request;
 use Illuminate\Http\Request;
 use $REPO_NAMESPACE$\$MODEL_NAME$Repository;
-use Mitul\Controller\AppBaseController;
+use Innodite\Controller\AppBaseController;
 use Response;
 use Flash;
 

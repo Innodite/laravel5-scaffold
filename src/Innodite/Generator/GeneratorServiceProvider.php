@@ -33,26 +33,26 @@ class GeneratorServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		$this->app->singleton('mitul.generator.api', function ($app)
+		$this->app->singleton('innodite.generator.api', function ($app)
 		{
 			return new APIGeneratorCommand();
 		});
 
-		$this->app->singleton('mitul.generator.scaffold', function ($app)
+		$this->app->singleton('innodite.generator.scaffold', function ($app)
 		{
 			return new ScaffoldGeneratorCommand();
 		});
 
-		$this->app->singleton('mitul.generator.scaffold_api', function ($app)
+		$this->app->singleton('innodite.generator.scaffold_api', function ($app)
 		{
 			return new ScaffoldAPIGeneratorCommand();
 		});
 
-		$this->app->singleton('mitul.generator.publish.base_controller', function ($app)
+		$this->app->singleton('innodite.generator.publish.base_controller', function ($app)
 		{
 			return new PublishBaseControllerCommand();
 		});
 
-		$this->commands(['mitul.generator.api', 'mitul.generator.scaffold', 'mitul.generator.scaffold_api', 'mitul.generator.publish.base_controller']);
+		$this->commands(['innodite.generator.api', 'innodite.generator.scaffold', 'innodite.generator.scaffold_api', 'innodite.generator.publish.base_controller']);
 	}
 }
