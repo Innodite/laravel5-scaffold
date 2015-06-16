@@ -1,60 +1,52 @@
-    Laravel5 API/Scaffold/CRUD Generator
-    =======================
+Laravel 5 API/Scaffold/CRUD Generator
 
+Con esta liberia  podran crear
+  - Archivos de Migracion
+  - Modelos
+  - Respositorios (opcionales)
+  - Controladores
+  - Vistas (integradas con dataTables y Tablas Responsivas)
+     - index.blade.php
+     - show.blade.php
+     - create.blade.php
+     - edit.blade.php
+     - fields.blade.php
+  - Rutas Personalizadas.php
 
-I enjoy creating API's and I have worked on many projects that required them. But the problem I always faced was setting up all the boilerplate code. For example each end point needs a migration, model, controller, repository, and on and on. I wanted a way to streamline this process and that is how this package was born.
+Guia de instalacion
 
-This API generator allows you to use artisan commands to automatically generate all these files saving you time. Not only does it auto generate the files but it will set the namespaces. 
-
-The artisan command can generate the following items:
-  * Migration File
-  * Model
-  * Repository (optional)
-  * Controller
-  * View
-    * index.blade.php
-    * show.blade.php
-    * create.blade.php
-    * edit.blade.php
-    * fields.blade.php
-  * adjusts routes.php
-
-And your simple CRUD API is ready in mere seconds.
-
-
-Steps to Get Started
----------------------
-
-1. Add this package to your composer.json:
+1. Agrega al archivo composer.json:
   
         "require": {
-            "innodite/laravel5-scaffold": "1.0.0*"
+            "innodite/laravel5-scaffold": "dev-master"
         }
   
-2. Run composer update
+2. Ejecuta en consola en la carpeta del proyecto composer update
 
         composer update
     
-3. Add the ServiceProviders to the providers array in ```config/app.php```.<br>
-   As we are using these two packages [illuminate/html](https://github.com/illuminate/html) & [laracasts/flash](https://github.com/laracasts/flash) as a dependency.<br>
-   so we need to add those ServiceProviders as well.
+3. Agrega los ServiceProviders al archivo config/app.php <br>
+       de [illuminate/html](https://github.com/illuminate/html) & <br>
+          [laracasts/flash](https://github.com/laracasts/flash) <br>
+   
+   De Todas Maneras Aqui Estan.
 
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Html\HtmlServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
         'Innodite\Generator\GeneratorServiceProvider'
         
-   Also for convenience, add these facades in alias array in ```config/app.php```.
+   Tambien debes agregas los alias a config/app.php
 
 		'Form'  => 'Illuminate\Html\FormFacade',
 		'HTML'  => 'Illuminate\Html\HtmlFacade',
 		'Flash' => 'Laracasts\Flash\Flash'
 
-4. Publish ```generator.php```
+4. Carga del archivo generator.php para que reconozca los comandos de la libreria
 
-        php artisan vendor:publish --provider="Mitul\Generator\GeneratorServiceProvider" --tag=config
+        php artisan vendor:publish --provider="Innodite\Generator\GeneratorServiceProvider" --tag=config
 
-5. Fire artisan command to generate API, Scaffold with CRUD views or both API as well as CRUD views.
+5. Estos son Algunos Comandos que puedes usar con la libreria
 
         php artisan innodite.generator:api ModelName
         php artisan innodite.generator:scaffold ModelName
@@ -71,50 +63,8 @@ Steps to Get Started
         php artisan innodite.generator:scaffold_api Project
         php artisan innodite.generator:scaffold_api Post
  
-6. If you want to use SoftDelete trait with your models then you can specify softDelete option.
- 
-        php artisan innodite.generator:api ModelName --softDelete
-        
-    e.g.
-    
-        php artisan innodite.generator:api Post --softDelete
-        
-7. Enter the fields with options<br>
 
-8. And you are ready to go. :)
-
-
-Documentation
---------------
-
-### Generator Config file
-
-Config file (```config/generator.php```) contains path for all generated files
-
-```path_migration``` - Path where Migration file to be generated<br>
-```path_model``` - Path where Model file to be generated<br>
-```path_repository``` - Path where Repository file to be generated<br>
-```path_controller``` - Path where Controller file to be generated<br>
-```path_api_controller``` - Path where API Controller file to be generated<br>
-```path_views``` - Path where views will be created<br>
-```path_request``` -  Path where request file will be created<br>
-```path_routes``` - Path of routes.php (if you are using any custom routes file)<br>
-
-```namespace_model``` - Namespace of Model<br>
-```namespace_repository``` - Namespace of Repository<br>
-```namespace_controller``` - Namespace of Controller<br>
-```namespace_api_controller``` - Namespace of API Controller<br>
-```namespace_request``` - Namespace for Request<br>
-
-```model_extend``` - Use custom Model extend<br>
-```model_extend_namespace``` - Namespace of custom extended model<br>
-```model_extend_class``` - Class name to extend<br>
-
-```api_prefix``` - API Prefix
-
-### Field Input
-
-Here is the input for the fields by which you can specify Input.
+Estos son algunos ejemplos de declaracion de tipos de input y respectivas validaciones
 
         fieldName:fieldType,options:fieldOptions
         
@@ -125,40 +75,10 @@ e.g.,
         title:string,100
         price:flat,8,4
 
-Parameters will be in the same sequence as ```Blueprint``` class function for all types.
-Option will be printed as it is given in input except unique & primary.
 
-### API Response Structure
- 
-**Remember: This response structure is based on the most of my API response structure, you can change it to your API response after file generation in controller.**
- 
-**Success**
+La utilizacion del CRUD te creara los archivos siguientes para las vistas
 
-        {
-            "flag":true,
-            "message":"success message",
-            "data":{}
-        }
-
-
-data can be anything as per response.
-
-**Failure**
-
-        {
-            "flag":false,
-            "message":"failure message",
-            "code": 0
-            "data":{}
-        }
-
-data will be optional. And code will be error code.
-
-### Generated Views
-
-While generating scaffold, all views are created with basic CRUD functionality.
-
-Views will be created in ```resources/views/modelName``` folder,
+en la ruta /resources/views/model_plural_name/
 
         index.blade.php - Main Index file for listing records
         create.blade.php - To insert a new record
@@ -166,43 +86,53 @@ Views will be created in ```resources/views/modelName``` folder,
         fields.blade.php - Common file of all model fields, which will be used create and edit record
         show.blade.php - To display a record
         
-### Using with Custom Application namespace
+Puedes cargar los CRUD desde un archivo externo en formato json usando este comando
 
-Sometimes, we are using different namespace rather than default ```App``` namespace.
-
-Generator's ```AppBaseController``` is extending Laravel's ```App\Http\Controllers\Controller```. so while using diff namespace, we need to publish it with custom namespace.
-
-You need to give a full path of default Controller with your namespace as input. For e.g.,
-
-        php artisan innodite.generator.publish:base_controller "MyApp\Http\Controllers\Controller"
-             
-It will generate AppBaseController again with extending custom namespace controller.
-
-### Customizing generated files
-
-1. Publish templates into ```/resources/api-generator-templates```
-
-        php artisan vendor:publish --provider="Innodite\Generator\GeneratorServiceProvider" --tag=templates
-
-2. Leave only those templates that you want to change. Remove the templates that do not plan to change.
-
-3. Add the remaining files to git and make your magic!
-
-### Passing fields from file
-
-
-
-You have to pass option ```--fieldsFile=absolute_file_path_or_path_from_base_directory``` with command. e.g.
-
-         php artisan innodite.generator:scaffold_api Post --fieldsFile="/Users/Innodite/laravel-api-generator/fields.json"
+         php artisan innodite.generator:scaffold_api Post --fieldsFile="/innodite/laravel5-scaffold/samples/fields.json"
          php artisan innodite.generator:scaffold_api Post --fieldsFile="fields.json"
 
+Para la Internacionalizacion deben de crear en su carpeta /resources/lang/es o /resources/lang/en
+dependiendo si es multi idioma o no , el archivo application.php
 
-### Search in Views
+Ejemplo de traduccion
+return [
 
-Include search functionality in view ```index.php```
+	"model" => [
+		/* Ejemplo Traducción de Atributos de Algún Modelo */
+		"modelname" => [
+			"attributes" => [
+				"ex_name"        => "Ej_Nombre",
+				"ex_description" => "Ej_Descripción"
+			]
+		],
+]; 
 
-You have to pass option ```--search``` with command. e.g.
+Ejemplo de uso 
 
-         php artisan innodite.generator:scaffold_api Post --search"
+{!! trans('application.model.modelname.ex_name') !!}
+
+
+y alli colocaran las traducciones ejemplo 
+
+Para Poder Usar los dataTables deben Descargar los Siguientes Archivos y copiarlos en
+
+Carpeta /public/js
+    https://code.jquery.com/jquery-1.11.3.js
+
+Se recomienda sustituir dentro del archivo /resources/views/app.blade.php
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+Por
+
+    <script src="{{ asset('/js/jquery-1.11.3.min.js') }}"></script>
+
+Carpeta /public/js/datatables/
+    http://cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json
+    https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js
+    https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js
+
+Carpeta /public/css/datatables/
+    http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css
+
 
