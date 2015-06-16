@@ -1,0 +1,16 @@
+@extends('app')
+
+@section('content')
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{ trans('application.show.$MODEL_NAME_CAMEL$').':' }}</div>
+        <div class="panel-body">
+            $FIELDS$
+            <div class="form-group">
+                 <a href="{{route('$MODEL_NAME_PLURAL_CAMEL$.index')}}" class="btn btn-success">{!! trans('pagination.back') !!}</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+@endsection

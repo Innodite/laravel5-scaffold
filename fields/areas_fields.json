@@ -1,0 +1,10 @@
+[
+    {
+        "field":"cod_area:string",
+        "validations": ""
+    },
+    {
+        "field":"area:string,20",
+        "validations": "required"
+    }
+]

@@ -1,0 +1,18 @@
+@extends('app')
+
+@section('content')
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{ trans('application.new.$MODEL_NAME_CAMEL$').':' }}</div>
+        <div class="panel-body">
+    @include('common.errors')
+
+    {!! Form::open(['route' => '$MODEL_NAME_PLURAL_CAMEL$.store']) !!}
+
+        @include('$MODEL_NAME_PLURAL_CAMEL$.fields')
+
+    {!! Form::close() !!}
+    </div>
+    </div>
+</div>
+@endsection

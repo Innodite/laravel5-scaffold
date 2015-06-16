@@ -1,0 +1,67 @@
+@extends('app')
+
+@section('content')
+
+    <div class="container">
+
+        @include('flash::message')
+        <div class="row">
+           <div class="panel panel-default">
+                <div class="panel-heading">{{ trans('application.view.$MODEL_NAME_PLURAL_CAMEL$') }}</div>
+                 <div class="panel-body">
+            <p>
+                <a class="btn btn-info" href="{!! route('$MODEL_NAME_PLURAL_CAMEL$.create') !!}">{{ trans('application.new.$MODEL_NAME_CAMEL$')  }}</a>
+            </p>
+            @if($$MODEL_NAME_PLURAL_CAMEL$->isEmpty())
+                <!-- Last Message: No $MODEL_NAME_PLURAL$ found. -->
+                <div class="well text-center">{{ trans('application.model.message.basic.failure.norows') }}</div>
+            @else
+            <div class="table-responsive container-fluid">
+                <table id="$MODEL_NAME_PLURAL_CAMEL$" class="table table-striped table-bordered">
+                    <thead>
+                    <th class="text-center">#</th>
+                    $FIELD_HEADERS$
+                    <th class="text-center">{{ trans('application.view.actions.action') }}</th>
+                    </thead>
+                    <tbody>
+                   
+                     $SEARCH$
+                    @foreach($$MODEL_NAME_PLURAL_CAMEL$ as $$MODEL_NAME_CAMEL$)
+                        <tr>
+                            <td class="text-center">{{ $$MODEL_NAME_CAMEL$->id }}</td>
+                            $FIELD_BODY$
+                            <td class="text-center">
+                                <a href="{!! route('$MODEL_NAME_PLURAL_CAMEL$.show', [$$MODEL_NAME_CAMEL$->id]) !!}"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                <a href="{!! route('$MODEL_NAME_PLURAL_CAMEL$.edit', [$$MODEL_NAME_CAMEL$->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
+                                <a href="{!! route('$MODEL_NAME_PLURAL_CAMEL$.delete', [$$MODEL_NAME_CAMEL$->id]) !!}" onclick="return confirm('{{ trans('application.model.message.confirm.delete') }}')"><i class="glyphicon glyphicon-remove"></i></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+            @endif
+            </div>
+            </div>
+           
+        </div>
+    </div>
+@endsection
+@section('scripts')
+
+@include('libs.datatables')
+
+    @if(App::getLocale() == 'es')
+    <script>
+        $('#$MODEL_NAME_PLURAL_CAMEL$').DataTable( {
+            language: { 
+                url: '/js/datatables/Spanish.json'    
+            }
+        } );
+    </script>
+    @else
+    <script>
+        $('#$MODEL_NAME_PLURAL_CAMEL$').DataTable();
+    </script>
+    @endif
+@endsection

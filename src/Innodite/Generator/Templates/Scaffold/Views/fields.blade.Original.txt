@@ -1,0 +1,5 @@
+$FIELDS$
+<!--- Submit Field --->
+<div class="form-group">
+    {!! Form::submit('Save', ['class' => 'btn btn-info']) !!}
+</div>
