@@ -26,9 +26,8 @@ Guia de instalacion
         composer update
     
 3. Agrega los ServiceProviders al archivo config/app.php <br>
-       de [illuminate/html](https://github.com/illuminate/html) & <br>
-          [laracasts/flash](https://github.com/laracasts/flash) <br>
-   
+       de [illuminate/html](https://github.com/illuminate/html) & [laracasts/flash](https://github.com/laracasts/flash)  
+     
    De Todas Maneras Aqui Estan.
 
         'Illuminate\View\ViewServiceProvider',
@@ -127,12 +126,13 @@ Por
 
     <script src="{{ asset('/js/jquery-1.11.3.min.js') }}"></script>
 
-Carpeta /public/js/datatables/
-    http://cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json
-    https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js
-    https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js
+Carpeta /public/js/datatables/      <br>
+    http://cdn.datatables.net/plug-ins/1.10.7/i18n/Spanish.json <br>
+    https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js <br>
+    https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js <br>
 
-Carpeta /public/css/datatables/
+Carpeta /public/css/datatables/ <br>
+
     http://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css
 
 
