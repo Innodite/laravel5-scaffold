@@ -93,7 +93,8 @@ Puedes cargar los CRUD desde un archivo externo en formato json usando este coma
 Para la Internacionalizacion deben de crear en su carpeta /resources/lang/es o /resources/lang/en
 dependiendo si es multi idioma o no , el archivo application.php
 
-Ejemplo de traduccion
+Ejemplo de traduccion<br>
+
 return [
 
 	"model" => [
