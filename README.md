@@ -87,8 +87,9 @@ en la ruta /resources/views/model_plural_name/
         
 Puedes cargar los CRUD desde un archivo externo en formato json usando este comando
 
-         php artisan innodite.generator:scaffold_api Post --fieldsFile="/innodite/laravel5-scaffold/samples/fields.json"
-         php artisan innodite.generator:scaffold_api Post --fieldsFile="fields.json"
+         php artisan innodite.generator:scaffold_api Example --fieldsFile="/innodite/laravel5-scaffold/samples/fields.json"
+         php artisan innodite.generator:scaffold Example --fieldsFile="vendor/innodite/laravel5-scaffold/samples/fields.json"
+         php artisan innodite.generator:scaffold_api Example --fieldsFile="fields.json"
 
 Para la Internacionalizacion deben de crear en su carpeta /resources/lang/es o /resources/lang/en
 dependiendo si es multi idioma o no , el archivo application.php
