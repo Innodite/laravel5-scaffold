@@ -31,14 +31,14 @@ Guia de instalacion
    De Todas Maneras Aqui Estan.
 
         'Illuminate\View\ViewServiceProvider',
-        'Illuminate\Html\HtmlServiceProvider',
+        'Collective\Html\HtmlServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
         'Innodite\Generator\GeneratorServiceProvider'
         
    Tambien debes agregas los alias a config/app.php
 
-		'Form'  => 'Illuminate\Html\FormFacade',
-		'HTML'  => 'Illuminate\Html\HtmlFacade',
+		'Form'  => 'Collective\Html\FormFacade',
+		'HTML'  => 'Collective\Html\HtmlFacade',
 		'Flash' => 'Laracasts\Flash\Flash'
 
 4. Carga del archivo generator.php para que reconozca los comandos de la libreria
