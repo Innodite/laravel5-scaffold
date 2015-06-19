@@ -115,7 +115,7 @@ Ejemplo de uso
 
 y alli colocaran las traducciones ejemplo 
 
-Para Poder Usar los dataTables deben Descargar los Siguientes Archivos y copiarlos en
+Para Poder Usar los dataTables sino estan usando nuestra Aplicacion Base deben Descargar los Siguientes Archivos y copiarlos en
 
 Carpeta /public/js
     https://code.jquery.com/jquery-1.11.3.js
